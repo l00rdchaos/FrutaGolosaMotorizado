@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/Espmenu"
+        android:orderInCategory="100"
+        android:title="En Espera"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/EspFabricado"
+        android:orderInCategory="100"
+        android:title="Fabricado"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/EspAsignado"
+        android:orderInCategory="100"
+        android:title="Asignados a mi"
+
+        app:showAsAction="never" />
+
+
+</menu>

@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">FrutGolosaMotorizado</string>
+    <string name="logo">logo</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="fechaentrega">FechaEntrega</string>
+    <string name="recibe">Recibe</string>
+    <string name="telefono">Telefono</string>
+    <string name="arreglo">Arreglo</string>
+    <string name="correo_clientetxt">correo_clientetxt</string>
+    <string name="numeracion">numeracion</string>
+    <string name="keyaccount">keyaccount</string>
+    <string name="regalo">regalo</string>
+    <string name="costo_envio">costo_envio</string>
+    <string name="cd">cd</string>
+    <string name="parroquia">parroquia</string>
+    <string name="globo">globo</string>
+    <string name="coordenadas">coordenadas</string>
+    <string name="calle_principal">calle_principal</string>
+    <string name="especificacion">especificacion</string>
+    <string name="estado">estado</string>
+    <string name="referencia">referencia</string>
+    <string name="telfcliente">TelFCliente</string>
+    <string name="calle_secundaria">calle_secundaria</string>
+    <string name="motorizado">motorizado</string>
+    <string name="disenador">disenador</string>
+    <string name="textview">TextView</string>
+    <string name="sector">Sector</string>
+    <string name="fecha_pedido">Fecha_pedido</string>
+    <string name="nombre_pide">Nombre_pide</string>
+    <string name="texto_tarjeta">texto_tarjeta</string>
+    <string name="casaempresaedificio">casaempresaedificio</string>
+    <string name="portada_tarjeta">portada_tarjeta</string>
+    <string name="hora">Hora</string>
+    <string name="idpedido">IDPEDIDO</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "344561978096",
+    "firebase_url": "https://frutgolosamotorizado.firebaseio.com",
+    "project_id": "frutgolosamotorizado",
+    "storage_bucket": "frutgolosamotorizado.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344561978096:android:dee7bdb768b417af",
+        "android_client_info": {
+          "package_name": "com.frutagolosa.frutgolosamotorizado"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344561978096-gkc6iffg07sl02t78n3quneiovgpte7q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.frutagolosa.frutgolosamotorizado",
+            "certificate_hash": "2cec34aab29cc7aafd45d77ed2f1ed1744b9c187"
+          }
+        },
+        {
+          "client_id": "344561978096-qgqidl54pkr6j3a9e9meqr08vodg2ut7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.frutagolosa.frutgolosamotorizado",
+            "certificate_hash": "2da13b321d11c9b149aad8e19a31b689a34bf12d"
+          }
+        },
+        {
+          "client_id": "344561978096-vd9krtm9t84fm32d6n6vii1074nj3o24.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD88yee_sBruG8kn-heXlex-wWLNIf-Dm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344561978096-vd9krtm9t84fm32d6n6vii1074nj3o24.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
