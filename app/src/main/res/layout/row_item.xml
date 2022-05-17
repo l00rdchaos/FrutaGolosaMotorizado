@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,15 +8,13 @@
     <TextView
         android:id="@+id/Fecha_entTxt"
         android:layout_width="0dp"
-        android:layout_height="38dp"
+        android:layout_height="wrap_content"
 
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="8dp"
         android:gravity="center_vertical"
         android:text="@string/fechaentrega"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/NombreCliente"
+        app:layout_constraintEnd_toStartOf="@+id/imgArreglo"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/FranajaHorariaTxt" />
@@ -24,41 +22,37 @@
     <TextView
         android:id="@+id/SectorTxt"
         android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:gravity="center_vertical"
         android:text="@string/sector"
         android:textColor="#B95130"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/calle_sectxt"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/referenciatxt" />
+        app:layout_constraintTop_toBottomOf="@+id/calle_printxt" />
 
     <TextView
         android:id="@+id/FranajaHorariaTxt"
         android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:text="@string/hora"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imgArreglo"
+        app:layout_constraintEnd_toEndOf="@+id/Arreglotxt"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/QuienRcibe" />
+        app:layout_constraintTop_toBottomOf="@+id/Arreglotxt" />
 
     <TextView
         android:id="@+id/IDPEDIDOTXT"
         android:layout_width="0dp"
         android:layout_height="15dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:gravity="center_vertical"
         android:text="@string/idpedido"
@@ -74,17 +68,12 @@
         android:layout_width="0dp"
         android:layout_height="34dp"
         android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
         android:layout_marginTop="72dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
         android:gravity="center_vertical"
         android:text="@string/recibe"
         android:textSize="18sp"
         android:textStyle="bold"
         android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@+id/NombreCliente"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -92,85 +81,29 @@
         android:id="@+id/TelefonoQrecibe"
         android:layout_width="0dp"
         android:layout_height="38dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:gravity="center_vertical"
         android:text="@string/telefono"
         android:textSize="18sp"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/Fecha_Pedido"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Arreglotxt"
         android:layout_width="0dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="10dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="8dp"
         android:gravity="center_vertical"
         android:text="@string/arreglo"
         android:textColor="#CC3A5C"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imgArreglo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Fecha_Pedido" />
-
-    <TextView
-        android:id="@+id/TelfClienteTxt"
-        android:layout_width="0dp"
-        android:layout_height="38dp"
-
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="180dp"
-        android:gravity="center_vertical"
-        android:text="@string/telfcliente"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Fecha_entTxt" />
-
-    <TextView
-        android:id="@+id/Fecha_Pedido"
-        android:layout_width="0dp"
-        android:layout_height="34dp"
-
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center_vertical"
-        android:text="@string/fecha_pedido"
-        android:textColor="#4CAF50"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imgArreglo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/NombreCliente"
-        android:layout_width="0dp"
-        android:layout_height="62dp"
-
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center_vertical"
-        android:text="@string/nombre_pide"
-        android:textAlignment="center"
-        android:textColor="#1A2D96"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/TelfClienteTxt"
-        app:layout_constraintTop_toBottomOf="@+id/imgArreglo" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -192,11 +125,12 @@
         android:layout_width="0dp"
         android:layout_height="61dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtimgaent"
+        app:layout_constraintTop_toBottomOf="@+id/IDPEDIDOTXT"
         app:srcCompat="@drawable/frutagolosatres" />
 
     <TextView
@@ -220,24 +154,20 @@
         android:id="@+id/calle_printxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:text="@string/calle_principal"
-        app:layout_constraintEnd_toStartOf="@+id/disenadortxt"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textColor="@color/design_default_color_primary"
+        app:layout_constraintEnd_toEndOf="@+id/Fecha_entTxt"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NombreCliente" />
+        app:layout_constraintTop_toBottomOf="@+id/Fecha_entTxt" />
 
     <TextView
 
         android:id="@+id/calle_sectxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
         android:text="@string/calle_secundaria"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="@+id/calle_printxt"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calle_printxt" />
@@ -471,8 +401,6 @@
         android:id="@+id/imgArreglo"
         android:layout_width="0dp"
         android:layout_height="133dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="2dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -480,4 +408,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/frutagolosa" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

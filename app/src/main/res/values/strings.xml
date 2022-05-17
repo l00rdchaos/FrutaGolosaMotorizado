@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FrutGolosaMotorizado</string>
+    <string name="app_name">Motorizado</string>
     <string name="logo">logo</string>
     <string name="title_activity_maps">Map</string>
     <string name="fechaentrega">FechaEntrega</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.frutagolosa.frutgolosamotorizado">
+    package="com.frutagolosa.fgmoto">
   <!--
        The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
        Google Maps Android API v2, but you must specify either coarse or fine
@@ -10,21 +10,19 @@
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
   <application
+
       android:allowBackup="true"
       android:icon="@mipmap/frutagolosa"
       android:label="Motorizado"
       android:roundIcon="@mipmap/frutagolosa"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".PedidosEntregadosMi"></activity>
+    <activity android:name="com.frutagolosa.fgmoto.PedidosEntregadosMi" android:exported="true"></activity>
 
-    <service
-        android:name=".TheService"
-        android:label="TheService"></service>
 
-    <activity android:name=".Inicio">
+    <activity android:name="com.frutagolosa.fgmoto.Inicio" android:exported="true">
       <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+        <action android:name="android.intent.action.MAIN"  />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
@@ -41,15 +39,12 @@
         android:name="com.google.android.geo.API_KEY"
         android:value="@string/google_maps_key" />
 
-    <activity
-        android:name=".MapsActivity"
-        android:label="@string/title_activity_maps" />
-    <activity android:name=".PedidosAsignados" />
-    <activity android:name=".PedidosEnEspera" />
-    <activity android:name=".PedidosFabricados" />
-    <activity android:name=".DetallePedido" />
-    <activity android:name=".Login_ValidActivity" />
-    <activity android:name=".MainActivity" />
+    <activity android:name="com.frutagolosa.fgmoto.PedidosAsignados" android:exported="true"/>
+    <activity android:name="com.frutagolosa.fgmoto.PedidosEnEspera" android:exported="true"/>
+    <activity android:name="com.frutagolosa.fgmoto.PedidosFabricados" android:exported="true"/>
+    <activity android:name="com.frutagolosa.fgmoto.DetallePedido" android:exported="true"/>
+    <activity android:name="com.frutagolosa.fgmoto.Login_ValidActivity" android:exported="true"/>
+    <activity android:name="com.frutagolosa.fgmoto.MainActivity" android:exported="true"/>
   </application>
 
 </manifest>
