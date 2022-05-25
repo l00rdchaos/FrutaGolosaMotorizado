@@ -13,6 +13,7 @@ public interface RegisterCerrarPedido {
   public void inseruser(
           @Field("a") String a,
           @Field("b") String b,
+          @Field("id") String id,
           Callback<Response> callback
 
 

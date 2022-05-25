@@ -1,7 +1,9 @@
 package com.frutagolosa.fgmoto;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,6 +39,8 @@ public class Inicio extends AppCompatActivity {
     handler.postDelayed(new Runnable() {
       @Override
       public void run() {
+        SharedPreferences preferences=getSharedPreferences("login", Context.MODE_PRIVATE);
+        final String id=preferences.getString("id","Registrese");
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint("https://frutagolosa.com/FrutaGolosaApp/versionm.php?z="+version)
                 .build();
@@ -46,7 +50,7 @@ public class Inicio extends AppCompatActivity {
         String z=version;
         api.evaluaversion(
                 z,
-
+                id,
 
 
 

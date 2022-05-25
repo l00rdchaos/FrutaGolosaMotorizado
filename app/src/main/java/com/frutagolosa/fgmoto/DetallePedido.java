@@ -6,12 +6,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +39,7 @@ import com.frutagolosa.fgmoto.api.RegisterCerrarPedido;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Hashtable;
 import java.util.Map;
@@ -110,7 +116,6 @@ public class DetallePedido extends AppCompatActivity {
     final TextView sectortxt=(TextView) findViewById(R.id.vSectortxt2);
     final  TextView coordenadatxt=(TextView) findViewById(R.id.Coordenadastxt2);
     final  TextView textarregl=(TextView) findViewById(R.id.textviewfotoli);
-    final  TextView estadotxt=(TextView) findViewById(R.id.estadotxt);
 
     final ImageView ImageArreglo=(ImageView) findViewById(R.id.imageviewMOTO);
 
@@ -159,7 +164,7 @@ public class DetallePedido extends AppCompatActivity {
 
     }
 
-    if(coordenadas.equals("no")){
+    if(coordenadas.length()<5){
 
       btnMapa.setVisibility(View.GONE);
 
@@ -174,17 +179,19 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
       public void onClick(View v) {
         final  String imgaent=getIntent().getStringExtra(PedidosAsignados.imgaentA);
         String numberWithCountryCode=Telefono_Cliente.replaceFirst("0","+593");
+          SharedPreferences preferences=getSharedPreferences("login", Context.MODE_PRIVATE);
+          String t=preferences.getString("ciudad","No");
          String message="";
-        if(ciudad.equals("QUITO")){
+        if(t.equals("QUITO")){
          message="Gracias por contar con Fruta Golosa, su presente ya fue entregado. \n" +
-                "Recuerde que tiene descuento del 5, 10 y 15% en sus siguientes compras. \n" +
+                "Recuerde que tiene descuento del 5, 10 y 15 por ciento en sus siguientes compras. \n" +
                 "Ayúdenos con la encuesta, que nos permitirá seguir mejorando a cada instante. \n" +
                 "https://forms.gle/1CfiKZPzhYS4ZFnA8\n" +
                 "Muchas graciias. \n" +
                 "Fruta Golosa Ecuador.";}
-        if(ciudad.equals("GUAYAQUIL")){
+        if(t.equals("GUAYAQUIL")){
           message="Gracias por contar con Fruta Golosa Guayaquil, su presente ya fue entregado. \n" +
-                  "*Recuerde que tiene descuento del 5, 10 y 15% en sus siguientes compras. \n" +
+                  "*Recuerde que tiene descuento del 5, 10 y 15 por ciento en sus siguientes compras. \n" +
                   "Ayúdenos con la encuesta, que nos permitirá seguir mejorando a cada instante. \n" +
                   "https://forms.gle/ozn5pWFvG9zA9khZA\n" +
                   "Muchas gracias. \n" +
@@ -206,9 +213,7 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
       public void onClick(View v) {
         SharedPreferences preferences=getSharedPreferences("login", Context.MODE_PRIVATE);
         String nombreus=preferences.getString("nombreus","Registrese");
-        String mailus=preferences.getString("mailus","No");
-        String telefonous=preferences.getString("telefonous","No");
-
+        String id=preferences.getString("id","Registrese");
 
         String a=nombreus;
         String b=IDPEDIDO;
@@ -224,7 +229,7 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
                 a,
                 b,
                 c,
-
+                id,
 
                 new Callback<retrofit.client.Response>() {
                   @Override
@@ -268,6 +273,8 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
     btnCancelRut.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        SharedPreferences preferences=getSharedPreferences("login", Context.MODE_PRIVATE);
+        String id=preferences.getString("id","Registrese");
         String b=IDPEDIDO;
         String a="motorizado";
         String c="Fabricado";
@@ -282,6 +289,7 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
                 a,
                 b,
                 c,
+                id,
 
 
                 new Callback<retrofit.client.Response>() {
@@ -385,9 +393,10 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
     btnEntregCer.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        SharedPreferences preferences=getSharedPreferences("login", Context.MODE_PRIVATE);
         String b=IDPEDIDO;
         String a="Entregado";
-
+        String id=preferences.getString("id","Registrese");
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(ROOT_URL)
                 .build();
@@ -397,6 +406,7 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
         api.inseruser(
                 a,
                 b,
+                id,
 
 
                 new Callback<retrofit.client.Response>() {
@@ -463,6 +473,8 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
 
   }
 
+
+
   @Override
   protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
@@ -470,11 +482,13 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
     if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
       Uri filePath = data.getData();
       try {
-        //Cómo obtener el mapa de bits de la Galería
-        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-        bitmap= Bitmap.createScaledBitmap(bitmap,440,520,true);
-        //Configuración del mapa de bits en ImageView
-        Glide.with(this).asBitmap().load(bitmap).into(ArregloL);
+          //Cómo obtener el mapa de bits de la Galería
+          bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+          bitmap= Bitmap.createScaledBitmap(bitmap,440,520,true);
+          //Configuración del mapa de bits en ImageView
+          Glide.with(this).asBitmap().load(bitmap).into(ArregloL);
+
+          //Configuración del mapa de bits en ImageView
         uploadImage();
         insetaimagenarreglolisto();
 
@@ -495,25 +509,17 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
     final ProgressDialog loading = ProgressDialog.show(this, "Subiendo...", "Espere por favor");
 
     StringRequest stringRequest = new StringRequest(Request.Method.POST, UPLOAD_URL,
-            new com.android.volley.Response.Listener<String>() {
-              @Override
-              public void onResponse(String response) {
-                loading.dismiss();
-                Toast.makeText(DetallePedido.this, response, Toast.LENGTH_LONG).show();
-                if(response.equals("Imagen Enviada")){
+            response -> {
+              loading.dismiss();
+              Toast.makeText(DetallePedido.this, response, Toast.LENGTH_LONG).show();
+              if(response.equals("Imagen Enviada")){
 
-                  Button btnEntregCer=findViewById(R.id.btnEntregCerrar);
-                  btnEntregCer.setVisibility(View.VISIBLE);
+                Button btnEntregCer=findViewById(R.id.btnEntregCerrar);
+                btnEntregCer.setVisibility(View.VISIBLE);
+               //   Log.d("Testttttttttt ",  getStringImagen(bitmap));
 
-                }
               }
-            }, new com.android.volley.Response.ErrorListener() {
-      @Override
-      public void onErrorResponse(VolleyError error) {
-        loading.dismiss();
-
-      }
-    }){
+            }, error -> loading.dismiss()){
       @Override
       protected Map<String, String> getParams() throws AuthFailureError {
         String imagen = getStringImagen(bitmap);
@@ -583,44 +589,7 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
 
   }
 
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menuped, menu);
-    return true;
-  }
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
 
-    //noinspection SimplifiableIfStatement
-    if (id == R.id.Espmenu) {
 
-      Intent a= new Intent(DetallePedido.this, PedidosEnEspera.class);
-      startActivity(a);
-      return true;
-    }
-
-    if (id == R.id.EspFabricado) {
-
-      Intent a= new Intent(DetallePedido.this, PedidosFabricados.class);
-      startActivity(a);
-      finish();
-      return true;
-    }
-
-    if (id == R.id.EspAsignado) {
-
-      Intent a= new Intent(DetallePedido.this, PedidosAsignados.class);
-      startActivity(a);
-      finish();
-      return true;
-    }
-
-    return super.onOptionsItemSelected(item);
-  }
 }

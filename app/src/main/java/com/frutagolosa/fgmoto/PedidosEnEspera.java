@@ -204,7 +204,7 @@ public class PedidosEnEspera extends AppCompatActivity {
         cargare();
       }
       if (resultCode == Activity.RESULT_CANCELED) {
-        Toast.makeText(this, "Ningun cambio", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Ningun cambio", Toast.LENGTH_SHORT).show();
       }
     }
   } //o

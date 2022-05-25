@@ -5,11 +5,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.frutagolosa.fgmoto.api.ApiInterface2;
@@ -17,7 +23,9 @@ import com.frutagolosa.fgmoto.model.Contact;
 import com.frutagolosa.fgmoto.api.ApiClient;
 
 import com.frutagolosa.fgmoto.adapter.RecyclerAdapter;
+import com.google.android.gms.common.data.DataHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -29,6 +37,7 @@ public class PedidosFabricados extends AppCompatActivity {
   private RecyclerView.LayoutManager layoutManager;
   private RecyclerAdapter adapter;
   private List<Contact> contacts;
+  private List<Contact> contactssh=new ArrayList<Contact>();
   private ApiInterface2 apiInterface;
   public static final String IdPEDIDOA="id0" ;
   public static final String IdArregloA="id2" ;
@@ -58,13 +67,55 @@ public class PedidosFabricados extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_pedidos_en_espera);
+    setContentView(R.layout.activity_pedidos_fabricados);
     setTitle("Fabricados");
 
+    EditText editTextSerch=findViewById(R.id.search);
+    editTextSerch.addTextChangedListener(new TextWatcher() {
+      @Override
+      public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+      }
+
+      @Override
+      public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        try {
+          filter(charSequence.toString().toLowerCase());
+
+          Toast.makeText(PedidosFabricados.this, charSequence.length(), Toast.LENGTH_SHORT).show();
+
+
+        }catch (Exception e){
+
+
+        }
+      }
+
+      @Override
+      public void afterTextChanged(Editable editable) {
+
+      }
+    });
     cargare();
 
 
 
+  }
+
+  void filter(String text){
+    List<Contact> temp = new ArrayList();
+    for(Contact d: contacts){
+      //or use .equal(text) with you want equal match
+      //use .toLowerCase() for better matches
+      if(d.getNombre_qRecibe().toLowerCase().contains(text)){
+        temp.add(d);
+      }
+
+
+
+    }
+    //update recyclerview
+    adapter.updateList(temp);
   }
   private void cargare(){
     SharedPreferences preferences=getSharedPreferences("login", Context.MODE_PRIVATE);
@@ -76,7 +127,6 @@ public class PedidosFabricados extends AppCompatActivity {
     recyclerView = findViewById(R.id.recyclerViewt);
     layoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(layoutManager);
-    recyclerView.setHasFixedSize(true);
 
     apiInterface = ApiClient.getApiClient().create(ApiInterface2.class);
 
@@ -204,7 +254,7 @@ public class PedidosFabricados extends AppCompatActivity {
         cargare();
       }
       if (resultCode == Activity.RESULT_CANCELED) {
-        Toast.makeText(this, "Ningun cambio", Toast.LENGTH_SHORT).show();
+      // Toast.makeText(this, "Ningun cambio", Toast.LENGTH_SHORT).show();
       }
     }
   } //o

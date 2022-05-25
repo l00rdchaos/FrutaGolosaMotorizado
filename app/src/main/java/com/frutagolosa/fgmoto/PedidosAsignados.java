@@ -55,7 +55,7 @@ public class PedidosAsignados extends AppCompatActivity {
   public static final String SectorA="id22" ;
   public static final String CoordenadaA="id23" ;
   public static final String imgaentA="sid23asdasd" ;
-  public static final String Ciudad="sid23asdasdjh" ;
+  public static final String Ciudad="sid23asdasdfsdjh" ;
   int LAUNCH_3_ACTIVITY = 3;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +80,8 @@ public class PedidosAsignados extends AppCompatActivity {
     String nombreus=preferences.getString("nombreus","Registrese");
     String mailus=preferences.getString("mailus","No");
     String telefonous=preferences.getString("telefonous","No");
-    Call<List<Contact>> call = apiInterface.getContacts("https://frutagolosa.com/FrutaGolosaApp/PedidoAsignado.php?nombre="+nombreus);
+    String id=preferences.getString("id","No");
+    Call<List<Contact>> call = apiInterface.getContacts("https://frutagolosa.com/FrutaGolosaApp/PedidoAsignado.php?nombre="+nombreus+"&&id="+id);
 
     call.enqueue(new Callback<List<Contact>>() {
       @Override
@@ -146,7 +147,7 @@ public class PedidosAsignados extends AppCompatActivity {
             c.putExtra(SectorA,sectort);
             c.putExtra(CoordenadaA,coordenadast);
             c.putExtra(imgaentA,imgaent);
-            c.putExtra(Ciudad,imgaent);
+            c.putExtra(Ciudad,ciudad);
             startActivityForResult(c,LAUNCH_3_ACTIVITY);
 
           }

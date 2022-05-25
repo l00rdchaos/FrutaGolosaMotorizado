@@ -68,9 +68,13 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences preferences=getSharedPreferences("login", Context.MODE_PRIVATE);
     final String nombreus=preferences.getString("nombreus","Registrese");
+    final String id=preferences.getString("id","Registrese");
     String c=preferences.getString("mailus","No");
     String t=preferences.getString("telefonous","No");
+    String v=preferences.getString("verify","No");
+    String empresa=preferences.getString("empresa","No");
     User=nombreus;
+
     final Button PediFab=findViewById(R.id.pedidosFabricadosbtn);
     final Button PediAsig=findViewById(R.id.btnPdAsginados);
     final Button PediEsp=findViewById(R.id.btnPedidoEspera);
@@ -92,6 +96,13 @@ public class MainActivity extends AppCompatActivity {
 
     }else
     {
+
+   /* if(v.equals("No")){
+        Intent ra = new Intent(MainActivity.this, CodeActivity.class);
+
+        startActivity(ra);
+        finish();
+      }*/
       RestAdapter adapter2 = new RestAdapter.Builder()
               .setEndpoint("https://frutagolosa.com/FrutaGolosaApp/certificadomotorizado.php?t="+t)
               .build();
@@ -159,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
       String z=nombreus;
       api.evaluaversion(
               z,
+              id,
 
 
 
@@ -177,7 +189,11 @@ public class MainActivity extends AppCompatActivity {
                   } catch (IOException e) {
                     e.printStackTrace();
                   }
-                 efectivot.setText(output);
+                if(empresa.equals("FRUTA GOLOSA")){ efectivot.setText(output);}
+                else{
+
+                  efectivot.setText("Eres motorizado de la empresa "+empresa);
+                }
 
                 }
 

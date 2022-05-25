@@ -78,7 +78,8 @@ public class PedidosEntregadosMi extends AppCompatActivity {
     String nombreus=preferences.getString("nombreus","Registrese");
     String mailus=preferences.getString("mailus","No");
     String telefonous=preferences.getString("telefonous","No");
-    Call<List<Contact>> call = apiInterface.getContacts("https://frutagolosa.com/FrutaGolosaApp/PedidoEntregadoMoto.php?nombre="+nombreus);
+    String id=preferences.getString("id","No");
+    Call<List<Contact>> call = apiInterface.getContacts("https://frutagolosa.com/FrutaGolosaApp/PedidoEntregadoMoto.php?nombre="+nombreus+"&&id="+id);
 
     call.enqueue(new Callback<List<Contact>>() {
       @Override
