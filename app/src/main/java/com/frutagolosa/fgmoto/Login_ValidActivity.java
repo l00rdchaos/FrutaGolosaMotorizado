@@ -92,7 +92,7 @@ public class Login_ValidActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login__valid);
     FirebaseApp.initializeApp(this);
-    TextView dig = (TextView) findViewById(R.id.txtdigitcode);
+
 
     Button envcodcod = (Button) findViewById(R.id.btnEnviacod);
 
@@ -137,13 +137,12 @@ envcodcod.setOnClickListener(new View.OnClickListener() {
                   EditText c= (EditText) findViewById(R.id.editTextMail);
                   final EditText t= (EditText) findViewById(R.id.txtpohne);
                   Spinner ciudadsp=(Spinner) findViewById(R.id.SpCiudades);
-                  EditText codee = (EditText) findViewById(R.id.txtcod);
                   String telefono=t.getText().toString().trim().replace(" ","");
                   String nombre=n.getText().toString().trim();
                   String correo=c.getText().toString().trim().replace(" ","").toLowerCase();
                   String foto="https://frutagolosa.com/FrutaGolosaApp/FotoMotorizado/"+xf2+".png";
                   String ciudad=ciudadsp.getSelectedItem().toString();
-                  String cod=codee.getText().toString();
+
                   RestAdapter adapter = new RestAdapter.Builder()
                           .setEndpoint(ROOT_URL)
                           .build();
@@ -155,7 +154,7 @@ envcodcod.setOnClickListener(new View.OnClickListener() {
                           correo,
                           foto,
                           ciudad,
-                          cod,
+
 
 
                           new Callback<retrofit.client.Response>() {
@@ -177,7 +176,7 @@ envcodcod.setOnClickListener(new View.OnClickListener() {
                              if(!output.equals("No se registro" )&&!output.equals("Datos incorrectos") ){
                             savepreferences(output);
 
-                               notificacion();
+                              // notificacion();
                                uploadImage();
 
                               }
@@ -224,7 +223,7 @@ envcodcod.setOnClickListener(new View.OnClickListener() {
     editor.putString("ciudad",ciudad);
     editor.putString("empresa",empresa);
     editor.putString("id",id);
-  //  editor.putString("verify","No");
+    editor.putString("verify","No");
     editor.commit();
 
   }
@@ -293,7 +292,7 @@ envcodcod.setOnClickListener(new View.OnClickListener() {
             response -> {
 
             //  Toast.makeText(Login_ValidActivity.this, response, Toast.LENGTH_LONG).show();
-              Intent f = new Intent(Login_ValidActivity.this, Inicio.class);
+              Intent f = new Intent(Login_ValidActivity.this, CodeActivity.class);
               startActivity(f);
               finish();
               loading.dismiss();

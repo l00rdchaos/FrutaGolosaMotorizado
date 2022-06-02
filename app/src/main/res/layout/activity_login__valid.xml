@@ -28,21 +28,6 @@
             app:layout_constraintTop_toBottomOf="@+id/textView47"
             tools:targetApi="o" />
 
-        <EditText
-            android:id="@+id/txtcod"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:importantForAutofill="no"
-            android:maxLength="8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtdigitcode"
-            tools:targetApi="o" />
-
 
         <TextView
             android:textAlignment="center"
@@ -114,7 +99,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Numero de telefono (0991...)"
+            android:text="Numero de telefono (0991...) Te enviaremos un sms"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -135,20 +120,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnEnviacod"
             app:srcCompat="@drawable/frutagolosatres" />
-
-        <TextView
-            android:id="@+id/txtdigitcode"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="Codigo de usuario"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtpohne" />
 
         <Button
             android:id="@+id/btnEnviacod"
@@ -224,7 +195,7 @@
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtcod" />
+            app:layout_constraintTop_toBottomOf="@+id/txtpohne" />
 
         <Spinner
             android:id="@+id/spinnerTrab"

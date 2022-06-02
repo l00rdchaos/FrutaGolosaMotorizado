@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     TxtBien.setText("Bienvenido "+nombreus+" Recuerde no salir en ruta sin haberse asignado, si su pedido no sale en FABRICADOS y/o no tiene foto, solicitelo.");
     FirebaseApp.initializeApp(this);
-    if(nombreus.equals("Registrese")) {
+    if(v.equals("No")) {
       Intent ra = new Intent(MainActivity.this, Login_ValidActivity.class);
 
       startActivity(ra);
@@ -97,12 +97,6 @@ public class MainActivity extends AppCompatActivity {
     }else
     {
 
-   /* if(v.equals("No")){
-        Intent ra = new Intent(MainActivity.this, CodeActivity.class);
-
-        startActivity(ra);
-        finish();
-      }*/
       RestAdapter adapter2 = new RestAdapter.Builder()
               .setEndpoint("https://frutagolosa.com/FrutaGolosaApp/certificadomotorizado.php?t="+t)
               .build();

@@ -214,7 +214,7 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
         SharedPreferences preferences=getSharedPreferences("login", Context.MODE_PRIVATE);
         String nombreus=preferences.getString("nombreus","Registrese");
         String id=preferences.getString("id","Registrese");
-
+          String cargo=preferences.getString("empresa","No");
         String a=nombreus;
         String b=IDPEDIDO;
         String c="En Ruta";
@@ -229,7 +229,8 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
                 a,
                 b,
                 c,
-                id,
+                Integer.valueOf(id),
+                cargo,
 
                 new Callback<retrofit.client.Response>() {
                   @Override
@@ -274,7 +275,8 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
       @Override
       public void onClick(View v) {
         SharedPreferences preferences=getSharedPreferences("login", Context.MODE_PRIVATE);
-        String id=preferences.getString("id","Registrese");
+        int id=0;
+          String cargo="No";
         String b=IDPEDIDO;
         String a="motorizado";
         String c="Fabricado";
@@ -290,6 +292,7 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
                 b,
                 c,
                 id,
+                cargo,
 
 
                 new Callback<retrofit.client.Response>() {
@@ -310,7 +313,7 @@ Glide.with(this).asBitmap().load("https://frutagolosa.com/FrutaGolosaApp/Adminis
 
                     Toast.makeText(DetallePedido.this, output, Toast.LENGTH_LONG).show();
                       Intent returnIntent = new Intent();
-                      int resultx=3;
+                      int resultx=2;
                       returnIntent.putExtra("result",resultx);
                       setResult(Activity.RESULT_OK,returnIntent);
                       finish();

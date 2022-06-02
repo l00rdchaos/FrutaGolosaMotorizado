@@ -17,7 +17,6 @@ public interface RegisterAPI {
           @Field("correo") String correo,
           @Field("foto") String foto,
           @Field("ciudad") String ciudad,
-          @Field("codigo") String codigo,
           Callback<Response> callback
 
 
